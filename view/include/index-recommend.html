@@ -1,0 +1,207 @@
+<style type="text/css">
+	.channel{
+		background: #fff;
+		border-bottom: 10px solid #f5f5f5;
+		position: relative;
+	}
+	.channel_header{
+		padding: 15px 13px 14px 13px;
+		border-bottom: 1px silid #f0f0f0;
+		position: relative;
+	}
+	.channel_header_title{
+		position: relative;
+		font: bold 13px/13px a;
+		color: rgba(0,0,0,0.9);
+	}
+	.channel_header_title i{
+		position: absolute;
+		margin: 1px 0 0 5px;
+		padding: 1px 5px 1px 5px;
+		font: 14px/12px a;
+		color: #fff;
+		background:#53ac7d;
+		border-radius: 1px;
+	}
+	.tab {
+		position: absolute;
+		right: 13px;
+		top: 9px;
+	}
+	.tab a{
+		position: relative;
+		padding: 16px 7px;
+		font: 12px/12px a;
+		color: #999;
+	}
+	.tab a:first-child:after{
+		content: '';
+		position: absolute;
+		top: 16px;
+		right: 0;
+		bottom: 16px;
+		width: 1px;
+		border-right: 1px solid #ccc;
+	}
+	.tab a:last-child{
+		padding-left: 2px;
+	}
+
+	.tab_on{
+		color: #528ae8 !important;
+	}
+
+	.list{
+		padding: 0 13px;
+	}
+	.list li{
+		padding: 17px 0;
+		border-bottom: 1px solid #f0f0f0;
+	}
+	.list li:last-child{
+		border: none;
+	}
+	.book{
+		overflow: hidden;
+	}
+	.book_cover{
+		float: left;
+		position: relative;
+		width: 85px;
+		height: 113px;
+		background-color: #eeece9;
+		border: 1px solid #f0f0f0;
+		border-radius: 1px;
+		overflow: hidden;
+	}
+	.book img {
+		width: 100%;
+		height: 100%;
+		border-radius: 1px;
+	}
+
+	.book_finish{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		color: #fff;
+		padding: 25px 7px 6px;
+		font: 10px/10px a;
+		background: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.3));
+	}
+
+	.book .book_info{
+		margin-left: 100px;
+		padding-top: 6px;
+		background: #fff;
+	}
+	.book_title{
+		margin-bottom: 4px;
+		font: 16px/17px a;
+		color: rgba(0,0,0,0.9);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.book_author{
+		margin-top: 8px;
+		font: 12px/12px a;
+		color: rgba(0,0,0,0.7);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.book_summary{
+		margin: 8px 0 0;
+		height: 2.8em;
+		font: 12px/1.4em a;
+		color: rgba(0,0,0,0.6);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		display: -webkit-box;
+		-webkit-line-clamp:2;
+		-webkit-box-orient:vertical;
+	}
+
+	.book_wrap{
+		margin: 10px;
+		padding-top: 3px;
+		overflow: hidden;
+
+	}
+	.book_tag{
+		float: left;
+		margin: -3px 7px 0 0;
+		padding: 3px 6px 2px;
+		max-width: 6em;
+		font: 8px/11px a;
+		color: #52ac7d;
+		border: 1px solid #52ac7d;
+		border-radius: 3px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.book_tag :last-child{
+		margin-right: 0px;
+	}
+
+	.book__no-img_order{
+		float: left;
+		margin-top: 1px;
+		font: 13px/13px a;
+		color: rgba(237,83,15,0.9);
+	}
+
+	.book__no-img_info{
+		margin-left: 27px;
+	}
+
+	.book__no-img_title {
+		font: 15px/15px a;
+		color: rgba(0,0,0,0.9);
+		background: #fff;
+	}
+</style>
+<section class="channel">
+	<div class="channel_header">
+		<p class="channel_header_title">
+			重磅推荐<i>推</i>
+		</p>
+		<div class="tab">
+			<a href="javascript:" class="tab_on">男</a>
+			<a href="javascript:">女</a>
+		</div>
+	</div>
+	<ul class="list">
+		<li>
+			<div class="book">
+				<div class="book_cover">
+					<img src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p017io4EIZgP/tK1TkKVduNMK7w.jpg" alt="渣王作妃">
+					<p class="book_finish">完结</p>
+				</div>
+				<div class="book_info">
+					<p class="book_title">书名</p>
+					<p class="book_author">作者</p>
+					<p class="book_summary">简介</p>
+					<div class="book_wrap">
+						<div class="book_tag">标签标签标签标签标签</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="book book_no-img">
+				<span class="book__no-img_order">01</span>
+				<div class="book__no-img_info">
+					<p class="book__no-img_title">
+						书籍名称
+					</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+</section>

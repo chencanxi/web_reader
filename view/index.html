@@ -7,20 +7,35 @@
 	<title>首页</title>
 	<link rel="stylesheet" href="/static/css/reset.css">
 	<link rel="stylesheet" href="/static/css/all.css">
-
+	<style type="text/css">
+		.clearfix: after{
+			content: '';
+			display: block;
+			clear: both;
+			overflow: hidden;
+			visibility: hidden;
+		}
+	</style>	
 </head>
 <body>
-	<div id="root">
+	<div id="app" style="width: 734px; overflow: hidden;">
 		<% include include/header.html %>
-		<div>
-			<% include include/index-top.html%>
-			<% include include/index-hot.html%>
-			<% include include/index-recommend.html%>
-			<% include include/index-female.html%>
-			<% include include/index-male.html%>
-			<% include include/index-free.html%>
-			<% include include/index-bottom.html%>
-		</div>
+		<!-- <div style="width: 1468px;transition-duration:0.5s;transform:translate3d(0px,0px,0px)"> -->
+			<div class="container-warp" style="width: 734px; float: left;">
+				<div class="container-scroll" style="width: 734px;">
+					<% include include/index-top.html%>
+					<% include include/index-hot.html%>
+					<% include include/index-recommend.html%>
+					<% include include/index-female.html%>
+					<% include include/index-male.html%>
+					<% include include/index-free.html%>
+					<% include include/index-bottom.html%>
+				</div>
+			</div>
+			<!-- <div style="width: 734px; float: left;">
+				<% include include/index-shelf.html %>
+			</div> -->
+		<!-- </div> -->
 	</div>
 </body>
 <script src="/static/script/vue.js"></script>

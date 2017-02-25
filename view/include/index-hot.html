@@ -5,18 +5,18 @@
 		</p>
 	</div>
 	<ul class="list">
-		<li>
+		<li v-for="item in hot" v-if="$index>=0 && $index<5">
 			<div class="book">
 				<div class="book_cover">
-					<img src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p017io4EIZgP/tK1TkKVduNMK7w.jpg" alt="渣王作妃">
+					<img v-bind:src="item.cover" alt="{{ item.title }}">
 					<p class="book_finish">完结</p>
 				</div>
 				<div class="book_info">
-					<p class="book_title">书名</p>
-					<p class="book_author">作者</p>
-					<p class="book_summary">简介</p>
+					<p class="book_title">{{ item.title }}</p>
+					<p class="book_author">{{ item.authors }}</p>
+					<p class="book_summary">{{ item.summary }}</p>
 					<div class="book_wrap">
-						<div class="book_tag">标签标签标签标签标签</div>
+						<div class="book_tag" v-for="tag in item.categories">{{ tag.label }}</div>
 					</div>
 				</div>
 			</div>

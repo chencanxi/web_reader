@@ -15,6 +15,21 @@ app.use(koa_static({
 	maxage: 0
 }));
 
+app.use(controller.get('/ajax/chapter', function*(){
+    this.set('Cache-Control', 'no-cache');
+    this.body = ser.get_chapter_data();
+}));
+
+app.use(controller.get('/ajax/chapter_data', function*(){
+    this.set('Cache-Control', 'no-cache');
+    var params = querystring.parse(this.req._parsedUrl.query);
+    var id = params.id;
+    if(!id){
+       id = "";
+    }
+    this.body = ser.get_chapter_content_data(id);
+}));
+
 app.use(controller.get('/route_test',function*(){
     this.set('Cache-Control','no-cache');
     this.body = 'hello world'; 
@@ -25,7 +40,7 @@ app.use(controller.get('/ejs_test',function*(){
     this.body = yield render('test',{title:'title_test'});
 }));
 
-var querystring = require('querystring');
+
 
 // 页面数据
 app.use(controller.get('/',function*(){
@@ -58,11 +73,18 @@ app.use(controller.get('/search',function*(){
     this.body = yield render('search',{title:'搜索'});
 }));
 
+app.use(controller.get('/reader',function*(){
+    this.set('Cache-Control','no-cache');
+    this.body = yield render('reader');
+}));
+
+
+var querystring = require('querystring');
 app.use(controller.get('/book',function*(){
     this.set('Cache-Control','no-cache');
     var params = querystring.parse(this.req._parsedUrl.query);
     var bookId = params.id;
-    this.body = yield render('book',{bookId:bookId});
+    this.body = yield render('book',{nav:'书籍详情',bookId:bookId});
 }));
 
 app.use(controller.get('/api_test',function*(){
@@ -91,16 +113,17 @@ app.use(controller.get('/ajax/category',function*(){
 }));
 
 
-
-app.use(controller.get('/ajax/num',function*(){
+var querystring = require('querystring');
+app.use(controller.get('/ajax/book',function*(){
     this.set('Cache-Control','no-cache');
     var params = querystring.parse(this.req._parsedUrl.query);
     var id = params.id;
     if(!id){
     	id='';
     }
-    this.body = ser.get_num_data(id);
+    this.body = ser.get_book_data(id);
 }));
+
 
 app.use(controller.get('/ajax/female',function*(){
     this.set('Cache-Control','no-cache');

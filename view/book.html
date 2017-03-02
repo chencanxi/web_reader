@@ -1,1 +1,238 @@
-书籍<%=bookId%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no">
+	<title>书籍详情</title>
+	<link rel="stylesheet" href="/static/css/reset.css">
+	<style type="text/css">
+		/*书籍封面及介绍样式*/
+		.book-info{
+			border-bottom: 10px solid #f5f5f5;
+		}
+		.book-info_top{
+			width: 100%;
+			padding: 40px;
+			display: table;
+			box-sizing: border-box;
+		}
+		.book-cover{
+			width: 100px;
+			height: 134px;
+			background-color: #eeece9;
+			box-shadow: 0px 6px 5px -3px #aaa;
+			border: 1px solid #f0f0f0;
+			overflow: hidden;
+
+		}
+		.book-cover img{
+			width:100%;
+			height:100%;
+		}
+		.book-main-info{
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.book-main-info h3{
+			font-size: 16px;
+		}
+
+		.book-main-info .author{
+			color: #4b99a7;
+		}
+
+		.book-main-info .lz{
+			border: 1px solid #71c17b;
+			color: #71c17b;
+			margin: 0 0 0 3px;
+			font-size: 12px;
+			padding: 1px 2px;
+			border-radius: 3px;
+		}
+
+		/*按钮样式*/
+		.info-container{
+			padding: 0 14px;
+			margin: 0 0 27px;
+		}
+		.btn-container{
+			width: 100%;
+			/*font-size: 0;*/
+		}
+		.btn-item{
+			background-color: #f35d02;
+			text-align: center;
+			font-size: 14px;
+			line-height: 2.8em;
+			height: 2.8em;
+			color: #fff;
+			border-radius: 5px;
+		}
+
+		/*最新章节*/
+		.new{
+			width: 100%;
+			border-top: 1px solid #f5f5f5;
+			text-align: center;
+		}
+
+		.new-chapter{
+			color: #8d8d8d;
+			padding: 3px 0;
+		}
+
+		/*标签*/
+
+		.tag-container{
+			padding: 10px 0 10px 10px;
+		}
+		.book-tag{
+			font-size: 18px;
+			color: #8d8d8d;
+		}
+		.tag-item{
+			margin-top: 10px;
+		}
+
+		.tag-text{
+			border: 1px solid #f5f5f5;
+			padding: 0 20px;
+			color: #766d5d;
+			display: inline-block;
+			width: auto;
+			line-height: 1.8em;
+			text-align: center;
+			border: 1px solid #d3d3d3;
+			border-radius: 3px;
+			background-color: #fbe8e8;
+			margin-right: 10px;
+		}
+		/*作者其他作品*/
+		.another-book,.book-copyright{
+			padding: 20px 10px 20px 10px;
+		}
+		.another-book-cover{
+			width: 86px;
+			height: 113px;
+			margin: 7px 0;
+		}
+		.another-book-title{
+			font-size: 15px;
+			color: #8d8d8d;
+		}
+		.book-name{
+			color: #8d8d8d;
+			font-weight: bold;
+			width: 83px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		/*喜欢这书的人也喜欢*/
+		.book-flex{
+			display: -webkit-flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		/*图书信息*/
+		.copyright{
+			color: #8d8d8d;
+			font-size: 14px;
+			margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" style="width: {{ screen_width }}px; overflow: hidden;">
+		<% include include/common-header.html %>
+		<div class="container-scroll" style="{{ screen_width }}">
+			<section class="book-info">
+				<div class="book-info_top">
+					<div class="book-cover">
+						<img v-bind:src="item.cover" alt="{{ item.title }}">
+					</div>
+					<div class="book-main-info">
+						<h3>{{ item.title }}</h3>
+						<p class="author">{{ item.author }}</p>
+						<p>{{ item.score_count }}个评价</p>
+						<p>价格：{{ item.price }}书币/千字</p>
+						<p>字数:{{ item.word_count }}字<span class="lz">连载中</span></p>
+					</div>
+				</div>
+				<div class="info-container">
+					<ul class="btn-container">
+						<li class="btn-item" v-on:click="readBook()">
+							<span class="btn-value">开始阅读</span>
+						</li>
+					</ul>
+				</div>
+				<div class="info-container">
+					<p>{{ item.content }}</p>
+				</div>
+				<div class="new">
+					<p><span class="new-chapter">最新：</span>{{item.lastest }}</p>
+				</div>
+			</section>
+			<section class="book-info">
+				<div class="tag-container">
+					<h3 class="book-tag">类别标签</h3>
+					<div class="tag-item">
+						<ul>
+							<li v-for="tag in item.tags" v-if="$index<4" class="tag-text">{{ tag }}</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="book-info">
+				<div class="another-book">
+					<h3 class="another-book-title">
+						作者的其他作品
+					</h3>
+					<div class="book-container  book-flex" v-for="book in author_books">
+						<div>
+							<div class="book-cover another-book-cover">
+								<img v-bind:src="book.cover" alt="{{book.title}}">
+							</div>
+							<p class="book-name">
+								{{ book.title }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="book-info">
+				<div class="another-book">
+					<h3 class="another-book-title">
+						喜欢这本书的人也喜欢
+					</h3>
+					<div class="book-container book-flex">
+						<div class="flex-item" v-for="like in related" v-if="$index<3">
+							<div class="book-cover another-book-cover">
+								<img v-bind:src="like.cover" alt="{{ like.title }}">
+							</div>
+							<p class="book-name">
+								{{ like.title }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="book-info">
+				<div class="book-copyright">
+					<h3 class="copyright">
+						图书信息
+					</h3>
+					<p>版权：{{ item.rights }}</p>
+				</div>
+			</section>
+		</div>
+	</div>
+	
+</body>
+<script src="/static/script/vue.js"></script>
+<script src="/static/script/zepto.js"></script>
+<script src="/static/script/pages/book.js"></script>
+</html>

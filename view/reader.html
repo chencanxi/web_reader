@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+		<meta name="format-detection" content="telephone=no">
+		
+		<link rel="stylesheet" href="/static/css/reset.css">
+		<link rel="stylesheet" href="/static/css/icon.css" />
+		<link rel="stylesheet" href="/static/css/reader.css" />
+		
+	</head>
+	<body>
+		<header id="nav-header" class="nav nav-header" style="display: none;">
+			<a href="/"><div id="icon-back" class="icon-back"></div></a>
+			<div id="nav-text" class="nav-text">返回书架</div>
+		</header>
+		<article id="root" class="container">
+			
+			<div class="m-action">
+				<div class="action-mid" id="action_mid"></div>
+			</div>
+			
+			<div id="reader_title"></div>
+			<div id="reader_container" class="m-reader-container">
+				
+			</div>
+			<div class="m-button">
+				<ul class="u-tab">
+					<li id="prev-btn"><a id="clicked" href="#">上一章</a></li>
+					<li id="next-btn"><a id="clicked" href="#">下一章</a></li>
+				</ul>
+			</div>
+		</article>
+		<footer id="nav-footer" class="nav nav-footer" style="display: none;">
+			<div class="item" id="itemMenu">
+				<div class="item-warp">
+					<div class="item-icon" id="action_menu"><i class="iconfont icon">&#xe65b;</i></div>
+					<div class="item-text">目录</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="item-warp" id="itemFont">
+					<div class="item-icon" id="action_font"><i class="iconfont">&#xe8eb;</i></div>
+					<div class="item-text">字体</div>
+				</div>
+			</div>
+			<div class="item" id="day_night_btn">
+				<div class="item-warp" id="itemNight">
+					<div class="item-icon"><i class="iconfont">&#xe652;</i></div>
+					<div class="item-text">夜间</div>
+				</div>
+				<div class="item-warp" id="itemDay" style="display: none;">
+					<div class="item-icon"><i class="iconfont">&#xe646;</i></div>
+					<div class="item-text">日间</div>
+				</div>
+			</div>
+		</footer>
+		
+		<div class="font-panel-parent">
+		
+			<div class="font-pannel-bg"></div>
+		
+			<div class="font-panel">
+				<div class="child-mod">
+					<span>字号</span>
+					<button id="largeBtn" class="btn">大</button>
+					<button id="smallBtn" class="btn">小</button>
+				</div>
+				<div class="child-mod">
+					<span>背景</span>
+					<ul class="clearfix" id="bg-color">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		
+		</div>
+		<script src="/static/script/zepto.js"></script>
+		<script>
+			window.jQuery = $;
+		</script>
+		<script src="/static/script/jquery.base64.js" ></script>
+		<script src="/static/script/jquery.jsonp.js"></script>
+		<script src="/static/script/pages/reader.js"></script>
+		
+	</body>
+</html>

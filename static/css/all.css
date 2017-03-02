@@ -1,17 +1,19 @@
 .container-warp{
 			height: 100%;
 			overflow: hidden;
-			/*position: relative;*/
+			position: relative;
 		}
 		.container-scroll{
 			position: absolute;
-			top: 45px;
+			top: 0px;
 			bottom: 0px;
 			left: 0px;
 			right: 0px;
 			overflow-y: scroll;
 		}
 
+
+		/*头部样式*/
 		.header-tab{
 		padding: 0px 90px;
 		text-align: center;
@@ -81,7 +83,7 @@
 		color: #ff6600;
 	}
 
-
+	/*免费模块样式*/
 	.channel-group{
 		position: relative;
 	}
@@ -170,13 +172,17 @@
 		font-size: 14px;
 		padding: 19px 0;
 		border-bottom: 10px solid #f5f5f5;
+		line-height: 1.3em;
+	}
+	.footer{
+		margin-bottom: 35px;
 	}
 
 	.banner-h5__list {
     padding: 13px 13px 0px;
 }
 
-.banner-h5__list > div {
+.banner-h5__list div {
     margin: 0 -3px -3px;
     overflow: hidden;
 }
@@ -343,7 +349,6 @@
 		color: rgba(0,0,0,0.6);
 		overflow: hidden;
 		text-overflow: ellipsis;
-		white-space: nowrap;
 
 		display: -webkit-box;
 		-webkit-line-clamp:2;
